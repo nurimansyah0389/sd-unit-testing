@@ -94,3 +94,11 @@ tbody tr:nth-child(even) td {
     background: var(--color-secondary);
     color: var(--color-primary);
 }
+
+.logo {
+    text-align: center;
+    margin: 10px auto;
+}
+.logo img {
+    max-width: 240px;
+}
