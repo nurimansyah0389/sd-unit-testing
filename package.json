@@ -19,6 +19,7 @@
     "webpack-dev-server": "^3.8.2"
   },
   "scripts": {
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "test": "jest"
   }
 }
