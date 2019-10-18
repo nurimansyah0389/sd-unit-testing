@@ -18,6 +18,8 @@ registerButton.textContent = 'Register New Customer';
 
 // Form
 const formRegister = Form.cloneNode();
+formRegister.setAttribute('novalidate', true);
+formRegister.setAttribute('method', 'GET');
 formRegister.appendChild(emailAddress);
 formRegister.appendChild(password);
 formRegister.appendChild(registerButton);

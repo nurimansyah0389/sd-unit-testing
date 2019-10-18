@@ -2,7 +2,9 @@ import './styles/main.css';
 
 import FormRegister from './components/form-register';
 import Heading from './components/heading';
-import UserList from './components/user-list';
+import UserList, { addUser } from './components/user-list';
+import Registration from './lib/registration';
+import Users from './users.json';
 
 const Main = (App) => {
 
@@ -28,10 +30,32 @@ const Main = (App) => {
     MainParent.appendChild(FormRegister);
     MainParent.appendChild(Hr);
     MainParent.appendChild(BottomHeader);
-    MainParent.appendChild(UserList());
+    MainParent.appendChild(UserList(Users));
 
     // Create Tree
     App.appendChild(MainParent);
+
+    /**
+     * Logic
+     */
+    const onHandleRegister = e => {
+        e.preventDefault();
+        const [$email, $password] = FormRegister.childNodes;
+        const payload = {
+            email: $email.value,
+            password: $password.value
+        };
+        // Register
+        const registration = new Registration(Users);
+        if (registration.register(payload)) {
+            // Append user
+            addUser(payload);
+            // Clear form
+            $email.value = '';
+            $password.value = '';
+        }
+    };
+    FormRegister.addEventListener('submit', onHandleRegister);
 
 };
 export default Main;

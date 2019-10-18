@@ -5,6 +5,18 @@ const Row = document.createElement('tr');
 const ColHeader = document.createElement('th');
 const Col = document.createElement('td');
 
+export const addUser = user => {
+    const $row = Row.cloneNode();
+    const $email = Col.cloneNode();
+    const $password = Col.cloneNode();
+    $email.textContent = user.email;
+    $password.textContent = user.password;
+
+    $row.appendChild($email);
+    $row.appendChild($password);
+    Body.appendChild($row);
+};
+
 export default (payload = []) => {
 
     // Initial Data
